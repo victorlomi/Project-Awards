@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if not user.is_authenticated %}
+        <div class="mt-5 d-flex flex-column align-items-center">
+            <h1>Welcome to Project Awards</h1>
+            <h2>Please log in first</h2>
+        </div>
+    {% else %}
+        <p>ready to use project awards</p>
+    {% endif %}
+{% endblock %}
