@@ -11,6 +11,7 @@ urlpatterns = [
     path('project/<project>', views.project, name="project"),
     path('add-project/', views.add_project, name="add-project"),
     path('search/', views.search_results, name="search-results"),
+    path('add-rating/<project>', views.add_rating, name="add-rating"),
 ]
 
 if settings.DEBUG:

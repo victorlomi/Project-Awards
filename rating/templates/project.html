@@ -13,7 +13,7 @@
             <h5>Description: {{ project.description }}</h5>
             <div class="mt-5">
                 <a href="{{ project.link }}" class="card-text mr-5">Check It Out</a>
-                <a href="#" class="btn btn-primary">Rate Project</a>
+                <a href="{% url 'add-rating' project=project.id %}" class="btn btn-primary">Rate Project</a>
             </div>
           </div>
           <div class="col-3"></div>

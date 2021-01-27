@@ -4,8 +4,8 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.core.exceptions import *
-from .forms import SignUpForm, AddProjectForm
-from .models import Project
+from .forms import SignUpForm, AddProjectForm, RatingForm
+from .models import Project, Rating
 from django.contrib.auth import logout
 
 def homepage(request):
@@ -48,6 +48,24 @@ def add_project(request):
     else:
         form = AddProjectForm()
         return render(request, 'add-project.html', {'form': form})
+
+def add_rating(request, project):
+    rated_project = Project.objects.get(id=project)
+    if request.method == 'POST':
+        form = RatingForm(request.POST)
+        if form.is_valid():
+            rating = Rating(design=form.cleaned_data.get('design'),
+                            usability=form.cleaned_data.get('usability'),
+                            content=form.cleaned_data.get('content'),
+                            project=rated_project)
+            rating.save()
+            return redirect('homepage')
+        else:
+            return render(request, 'rate-project.html', {'form': form})
+    else:
+        form = RatingForm()
+        return render(request, 'rate-project.html', {'form': form})
+
 
 def signup(request):
     if request.user.is_authenticated:
