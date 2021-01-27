@@ -4,7 +4,8 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.core.exceptions import *
-from .forms import SignUpForm
+from .forms import SignUpForm, AddProjectForm
+from .models import Project
 from django.contrib.auth import logout
 
 def homepage(request):
@@ -14,7 +15,21 @@ def profile(request):
     return render(request, "profile.html")
 
 def add_project(request):
-    return render(request, "add-project.html")
+    if request.method == 'POST':
+        form = AddProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            project = Project(title=form.cleaned_data.get('title'),
+                              photo=form.cleaned_data.get('photo'),
+                              description=form.cleaned_data.get('description'),
+                              link=form.cleaned_data.get('link'),
+                              user=request.user)
+            project.save()
+            return redirect('homepage')
+        else:
+            return render(request, 'add-project.html', {'form': form})
+    else:
+        form = AddProjectForm()
+        return render(request, 'add-project.html', {'form': form})
 
 def signup(request):
     if request.user.is_authenticated:
