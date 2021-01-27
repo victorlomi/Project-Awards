@@ -13,7 +13,13 @@ def homepage(request):
     return render(request, "homepage.html", {"projects": projects})
 
 def profile(request):
-    return render(request, "profile.html")
+    projects = Project.objects.filter(user=request.user)
+    print(projects)
+    return render(request, "profile.html", {"projects": projects})
+
+def project(request, project):
+    current_project = Project.objects.get(id=project)
+    return render(request, "project.html", {"project": current_project})
 
 def add_project(request):
     if request.method == 'POST':

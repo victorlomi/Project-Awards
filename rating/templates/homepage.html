@@ -28,8 +28,9 @@
                             <h5 class="card-title">{{ project.title }}</h5>
                             <p class="card-text">{{ project.description }}</p>
                             <p class="card-text">Score: 5/10</p>
+                            <a href="{{ project.link }}" class="card-text mr-5">Check It Out</a>
                             <a href="#" class="btn btn-primary">Rate Project</a>
-                            <a href="{{ project.link }}" class="btn btn-primary">View Project</a>
+                            <a href="{% url 'project' project=project.id %}" class="btn btn-primary">View Project</a>
                         </div>
                     </div>
                 {% endfor %}

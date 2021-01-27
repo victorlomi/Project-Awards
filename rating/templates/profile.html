@@ -22,7 +22,9 @@
             {% endif %}
             <h5>Projects</h5>
             <ul>
-              <li>Project 1</li>
+              {% for project in projects %}
+                <li><a href="{{ project.link }}">{{ project.title }}</a></li>
+              {% endfor %}
             </ul>
           </div>
           <div class="col-3"></div>
