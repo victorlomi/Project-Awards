@@ -7,6 +7,7 @@ urlpatterns = [
     path('', views.homepage, name='homepage'),
     path('signup/', views.signup, name="signup"),
     path('', include('django.contrib.auth.urls')),
+    path('profile', views.profile, name="profile"),
 ]
 
 if settings.DEBUG:

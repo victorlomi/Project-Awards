@@ -9,6 +9,9 @@ from .forms import SignUpForm
 def homepage(request):
     return render(request, "homepage.html")
 
+def profile(request):
+    return HttpResponse("My profile page")
+
 def signup(request):
     if request.user.is_authenticated:
         return redirect('homepage')
