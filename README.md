@@ -1,10 +1,10 @@
 # Gallery
-A web app where users can experience a instagram like experience where users can browse the images of their friends and can create relationships by following and getting followed others. The website has a clean and modern design.
+A web app that allows users to get feedback on their projects. This will allow users to learn where they need to improve their apps in terms of design, usability, and content. To get this feedback, users can post their projects after signing up for the website.
 
 
 **Author: Victor Lominyo**
 
-**Live Link: https://instametoo.herokuapp.com/**
+**Live Link: https://todo.herokuapp.com/**
 
 
 Technologies Used
@@ -18,13 +18,13 @@ Setup Instructions and Installation
 1. Clone the repository on to your computer
 
 ```
-$ git clone https://github.com/victorlomi/Instagram-Clone
+$ git clone https://github.com/victorlomi/Project-Awards
 ```
 
 2. Navigate to the project directory 
 
 ```
-$ cd Instagram-Clone
+$ cd Project-Awards
 ```
 
 3. Create virtual environment and activate it
