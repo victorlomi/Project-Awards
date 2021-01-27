@@ -21,3 +21,9 @@ class Profile(models.Model):
     @receiver(post_save, sender=User)
     def save_user_profile(sender, instance, **kwargs):
         instance.profile.save()
+
+class Project(models.Model):
+    title = models.TextField(max_length=150)
+    photo = models.ImageField(upload_to="images/")
+    description = models.TextField(max_length=500, blank=True)
+    link = models.URLField()
