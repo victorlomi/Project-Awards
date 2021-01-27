@@ -11,7 +11,7 @@ def homepage(request):
     return render(request, "homepage.html")
 
 def profile(request):
-    return HttpResponse("My profile page")
+    return render(request, "profile.html")
 
 def signup(request):
     if request.user.is_authenticated:
