@@ -13,6 +13,9 @@ def homepage(request):
 def profile(request):
     return render(request, "profile.html")
 
+def add_project(request):
+    return render(request, "add-project.html")
+
 def signup(request):
     if request.user.is_authenticated:
         return redirect('homepage')
