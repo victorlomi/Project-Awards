@@ -27,3 +27,4 @@ class Project(models.Model):
     photo = models.ImageField(upload_to="images/")
     description = models.TextField(max_length=500, blank=True)
     link = models.URLField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
