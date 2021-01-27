@@ -7,6 +7,19 @@
             <h2>Please log in first</h2>
         </div>
     {% else %}
-        <p>ready to use project awards</p>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col">
+                    <h1>Projects</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <form action="{% url 'add-project' %}">
+                        <input class="btn btn-primary" type="submit" value="Add Project" />
+                    </form>
+                </div>
+            </div>
+        </div>
     {% endif %}
 {% endblock %}
