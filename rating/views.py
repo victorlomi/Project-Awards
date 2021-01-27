@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.core.exceptions import *
 from .forms import SignUpForm
+from django.contrib.auth import logout
 
 def homepage(request):
     return render(request, "homepage.html")
