@@ -1,10 +1,32 @@
-from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
+from django.core.exceptions import *
 from .forms import SignUpForm
 
 def homepage(request):
     return render(request, "homepage.html")
 
 def signup(request):
-    form = SignUpForm()
-    return render(request, "registration/signup.html", {"form": form})
+    if request.user.is_authenticated:
+        return redirect('homepage')
+    if request.method == 'POST':
+        form = SignUpForm(request.POST, request.FILES)
+        if form.is_valid():
+            print("handling signup")
+            user = form.save()
+            user.refresh_from_db()
+            user.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            print("signed up")
+            return redirect('homepage')
+        else:
+            return render(request, 'registration/signup.html', {'form': form})
+    else:
+        form = SignUpForm()
+        return render(request, 'registration/signup.html', {'form': form})
