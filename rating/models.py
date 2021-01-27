@@ -34,4 +34,8 @@ class Rating(models.Model):
     design = models.PositiveSmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
     usability = models.PositiveSmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
     content = models.PositiveSmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
-    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    project = models.OneToOneField(
+        Project,
+        on_delete=models.CASCADE,
+        primary_key=True,
+    )
