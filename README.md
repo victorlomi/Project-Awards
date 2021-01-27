@@ -4,7 +4,7 @@ A web app that allows users to get feedback on their projects. This will allow u
 
 **Author: Victor Lominyo**
 
-**Live Link: https://todo.herokuapp.com/**
+**Live Link: https://project-awwards.herokuapp.com/**
 
 
 Technologies Used
