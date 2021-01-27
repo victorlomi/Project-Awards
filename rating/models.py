@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -28,3 +29,9 @@ class Project(models.Model):
     description = models.TextField(max_length=500, blank=True)
     link = models.URLField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+class Rating(models.Model):
+    design = models.PositiveSmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
+    usability = models.PositiveSmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
+    content = models.PositiveSmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
