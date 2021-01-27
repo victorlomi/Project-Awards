@@ -9,7 +9,8 @@ urlpatterns = [
     path('', include('django.contrib.auth.urls')),
     path('profile', views.profile, name="profile"),
     path('project/<project>', views.project, name="project"),
-    path('add-project/', views.add_project, name="add-project")
+    path('add-project/', views.add_project, name="add-project"),
+    path('search/', views.search_results, name="search-results"),
 ]
 
 if settings.DEBUG:

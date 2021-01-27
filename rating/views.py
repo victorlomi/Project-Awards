@@ -21,6 +21,17 @@ def project(request, project):
     current_project = Project.objects.get(id=project)
     return render(request, "project.html", {"project": current_project})
 
+def search_results(request):
+    if 'project' in request.GET and request.GET["project"]:
+        search_term = request.GET.get("project")
+        searched_projects = Project.objects.filter(title__icontains=search_term)
+        #return render(request, 'search.html',{"search_term": search_term,"searched_usernames": searched_usernames})
+        print(search_term)
+        return render(request, 'search.html', {"search_term": search_term, "projects": searched_projects})
+    else:
+        message = "No Results"
+        return render(request, 'search.html', {"message":message})
+
 def add_project(request):
     if request.method == 'POST':
         form = AddProjectForm(request.POST, request.FILES)
