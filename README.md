@@ -1,4 +1,4 @@
-# Gallery
+# Project Awards
 A web app that allows users to get feedback on their projects. This will allow users to learn where they need to improve their apps in terms of design, usability, and content. To get this feedback, users can post their projects after signing up for the website.
 
 
