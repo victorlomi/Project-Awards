@@ -9,7 +9,8 @@ from .models import Project
 from django.contrib.auth import logout
 
 def homepage(request):
-    return render(request, "homepage.html")
+    projects = Project.objects.all()
+    return render(request, "homepage.html", {"projects": projects})
 
 def profile(request):
     return render(request, "profile.html")
